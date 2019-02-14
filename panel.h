@@ -2,13 +2,15 @@
 #define CHIP_PANEL_H
 
 #include <gtk/gtk.h>
+#include "picture.h"
 
 typedef struct
 {
   GtkWidget *base;
+  Picture picture;
 } Panel;
 
-Panel panel_new(void);
 void panel_constructor(Panel * const this);
+void panel_destructor(Panel * const this);
 
 #endif

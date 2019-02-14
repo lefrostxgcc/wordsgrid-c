@@ -14,11 +14,11 @@ int main(int argc, char *argv[])
   g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
   status = g_application_run(G_APPLICATION(app), argc, argv);
   g_object_unref(app);
+  frame_destructor(&frame);
   return status;
 }
 
 static void activate(GtkApplication *app, gpointer user_data)
 {
-  frame = frame_new(app);
-  frame_constructor(&frame, "Words in Boxes");
+  frame_constructor(&frame, app, "Words in Boxes");
 }

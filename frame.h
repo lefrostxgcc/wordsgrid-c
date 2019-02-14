@@ -10,7 +10,9 @@ typedef struct
   Panel panel;
 } Frame;
 
-Frame frame_new(GtkApplication *app);
-void frame_constructor(Frame * const this, const char *caption);
+void frame_constructor(Frame * const this,
+		       GtkApplication *app,
+		       const char *caption);
+void frame_destructor(Frame * const this);
 
 #endif
