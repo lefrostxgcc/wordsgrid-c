@@ -2,10 +2,12 @@
 #define CHIP_PICTURE_H
 
 #include <gtk/gtk.h>
+#include "box.h"
 
 typedef struct {
   cairo_surface_t *surface;
   cairo_t *g;
+  Box box;
 } Picture;
 
 void picture_constructor(Picture * const this);
