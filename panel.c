@@ -13,7 +13,7 @@ static gboolean on_draw(GtkWidget *widget, cairo_t *cr, gpointer data)
 void panel_constructor(Panel * const this)
 {
   this->base = gtk_drawing_area_new();
-  picture_constructor(&this->picture);
+  picture_constructor(&this->picture, 12, 40);
   gtk_widget_set_size_request(this->base,
 			      picture_get_width(&this->picture),
 			      picture_get_height(&this->picture));

@@ -13,6 +13,9 @@ void box_draw(Box * const this,
 {
   cairo_save(this->g);
   cairo_set_source_rgba(this->g, 0.0, 0.0, 0.0, 1.0);
+  sx--;
+  sy--;
+  cairo_set_line_width(this->g, 0.5);
   cairo_rectangle(this->g, x, y, sx, sy);
   cairo_stroke(this->g);
   cairo_set_font_face(this->g, this->font);
