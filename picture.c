@@ -33,7 +33,7 @@ void picture_init(Picture * const this)
     {
       this->box[row] = g_slice_alloc(sizeof (*this->box[row]) * this->N);
       for (int col = 0; col < this->N; col++)
-          box_constructor(&this->box[row][col], this->g);
+        box_constructor(&this->box[row][col], this->g, this->D);
     }
 }
 
@@ -43,8 +43,7 @@ void picture_draw(Picture * const this)
     for (int col = 0; col < this->N; col++)
       {
         char *letter = picture_get_random_letter(this);
-        box_draw(&this->box[row][col], letter,
-                 row * this->D, col * this->D, this->D + 1, this->D + 1);
+        box_draw(&this->box[row][col], letter, row * this->D, col * this->D);
         g_slice_free1(sizeof(*letter) * 2, letter);
       }
 }
