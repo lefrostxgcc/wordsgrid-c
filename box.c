@@ -9,7 +9,7 @@ void box_constructor(Box * const this, cairo_t *graphics, int D)
                                           CAIRO_FONT_WEIGHT_NORMAL);
 }
 
-void box_draw(Box * const this, const char *letter, int x, int y)
+void box_draw(Box * const this, const char *letter, bool hint, int x, int y)
 {
   cairo_save(this->g);
   cairo_set_source_rgba(this->g, 0.0, 0.0, 0.0, 1.0);
@@ -22,7 +22,10 @@ void box_draw(Box * const this, const char *letter, int x, int y)
   cairo_text_extents(this->g, letter, &ex);
   double letter_x = x + 1 + (this->D - 2 - ex.width) / 2 - ex.x_bearing;
   double letter_y = y + 1 + (this->D - 2 - ex.height) / 2 - ex.y_bearing;
-  cairo_set_source_rgba(this->g, 1.0, 0.0, 0.0, 1.0);
+  if (hint)
+    cairo_set_source_rgba(this->g, 1.0, 165.0 / 255.0, 0.0, 1.0);
+  else
+    cairo_set_source_rgba(this->g, 1.0, 0.0, 0.0, 1.0);
   cairo_move_to(this->g, letter_x, letter_y);
   cairo_show_text(this->g, letter);
   cairo_stroke(this->g);

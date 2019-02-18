@@ -9,6 +9,7 @@ typedef struct {
   cairo_t *g;
   Box **box;
   const char *abc;
+  const char *word;
   GRand *random;
   int N;
   int D;
